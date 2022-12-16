@@ -10,7 +10,7 @@
             </button>
 
             <button class="button-small"
-                    :class="this.pagination.current_page === this.pagination.total_pages"
+                    :class="this.pagination.current_page === this.pagination.total_pages ? 'disabled' : ''"
                     v-on:click="this.changePage('next')">
                 &raquo;
             </button>
