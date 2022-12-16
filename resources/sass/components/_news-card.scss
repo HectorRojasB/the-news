@@ -1,0 +1,28 @@
+.news-card {
+    margin-top: 14px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba($grey, 0.6);
+
+    .header, .footer {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .header, .footer, .content {
+        padding: 20px 16px;
+    }
+
+    .header {
+        background: $purple;
+        border-radius: 8px 8px 0 0;
+
+        .category, .region {
+            color: $white;
+            font-weight: bold;
+        }
+    }
+
+    .footer {
+        border-top: 1px solid $purple;
+    }
+}

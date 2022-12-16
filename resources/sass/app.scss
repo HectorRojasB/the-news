@@ -1,0 +1,37 @@
+@import 'foundation-sites/dist/css/foundation.css';
+
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Components
+@import "components/_news-card.scss";
+
+.header {
+    display: flex;
+    padding: 16px 0;
+    justify-content: space-between;
+}
+
+.pagination-container {
+    display: flex;
+    padding: 24px 0;
+    align-items: center;
+    justify-content: flex-end;
+
+    .pagination-controls {
+        button {
+            color: $purple;
+            cursor: pointer;
+            font-size: 36px;
+            margin-left: 12px;
+
+            &.disabled {
+                cursor: default;
+                color: rgba($purple, 0.4);
+            }
+        }
+    }
+}

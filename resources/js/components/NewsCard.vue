@@ -1,0 +1,42 @@
+<template>
+    <div class="news-card">
+        <div class="header">
+            <div class="category">
+                {{ this.category }}
+            </div>
+            <div class="region">
+                {{ this.region }}
+            </div>
+        </div>
+        <div class="content">
+            {{ this.content}}
+        </div>
+        <div class="footer">
+            <div class="date">
+                {{ this.creation }}
+            </div>
+            <div class="links">
+                Leer más en
+                <span v-for="link in this.links">
+                    <span v-for="single in link">
+                        <a :href="single.url" target="_blank">
+                            {{single.short}}
+                        </a>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props:[
+            'category',
+            'region',
+            'content',
+            'creation',
+            'links'
+        ]
+    }
+</script>
