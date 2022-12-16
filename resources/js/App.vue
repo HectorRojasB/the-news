@@ -1,6 +1,6 @@
 <template>
     <div class="grid-container">
-        <div class="empty-state" v-if="posts.length < 0">
+        <div class="empty-state" v-if="store.posts.length < 0">
                 No hay noticias aun
         </div>
 
@@ -10,16 +10,14 @@
                     <h3>The News</h3>
                     <input placeholder="Buscar">
                 </div>
-                <NewsCard v-for="post in posts"
+                <NewsCard v-for="post in store.posts"
                           :category="post.category"
                           :region="post.region"
                           :content="post.content"
                           :creation="post.creation"
                           :links="post.links"
                 />
-                <Pagination
-                    :pagination="this.pagination"
-                />
+                <Pagination/>
             </div>
         </div>
     </div>
@@ -27,21 +25,26 @@
 
 <script>
     import axios from 'axios'
+    import { store } from './store.js'
     import NewsCard from "./components/NewsCard.vue"
     import Pagination from "./components/Pagination.vue"
 
     export default  {
+        computed: {
+            store() {
+                return store
+            }
+        },
         components: {Pagination, NewsCard},
         data() {
             return {
-                posts: [],
                 pagination: []
             }
         },
         created() {
             axios.get('/api/post').then(response => {
-                this.posts = response.data.data
-                this.pagination = response.data.meta.pagination
+                store.posts = response.data.data
+                store.pagination = response.data.meta.pagination
             })
         }
     }
