@@ -7,7 +7,7 @@
         <div class="grid-x align-center">
             <div class="cell large-8">
                 <div class="header">
-                    <h3>Stetic News</h3>
+                    <h3>The News</h3>
                     <input placeholder="Buscar">
                 </div>
                 <NewsCard v-for="post in posts"
@@ -17,12 +17,9 @@
                           :creation="post.creation"
                           :links="post.links"
                 />
-                <div class="pagination-container">
-                    {{ this.pagination.current_page }} de {{ this.pagination.total_pages }}
-                    <div class="pagination-controls">
-                  
-                    </div>
-                </div>
+                <Pagination
+                    :pagination="this.pagination"
+                />
             </div>
         </div>
     </div>
@@ -30,10 +27,11 @@
 
 <script>
     import axios from 'axios'
-    import NewsCard from "./components/NewsCard.vue";
+    import NewsCard from "./components/NewsCard.vue"
+    import Pagination from "./components/Pagination.vue"
 
     export default  {
-        components: {NewsCard},
+        components: {Pagination, NewsCard},
         data() {
             return {
                 posts: [],
@@ -45,11 +43,6 @@
                 this.posts = response.data.data
                 this.pagination = response.data.meta.pagination
             })
-        },
-        methods: {
-            changePage(link) {
-                console.log(link)
-            }
         }
     }
 </script>
