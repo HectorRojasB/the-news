@@ -17,3 +17,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::resource('post', PostController::class);
 Route::resource('category',CategoryController::class);
+
+//Search endpoint
+Route::get('/search/{param}', [PostController::class, 'search']);
+

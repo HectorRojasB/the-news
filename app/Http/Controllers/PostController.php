@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Transformers\PostTransformer;
-use Illuminate\Http\JsonResponse;
-use App\Http\Requests\StorePostRequest;
 use League\Fractal\Manager;
-use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Transformers\PostTransformer;
+use App\Http\Requests\StorePostRequest;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PostController extends Controller
 {
@@ -21,7 +22,7 @@ class PostController extends Controller
         $this->postTransformer = $postTransformer;
 
     }
-    public function index()
+    public function index(): ?array
     {
         $postsPaginator = Post::paginate(10);
 
@@ -64,5 +65,21 @@ class PostController extends Controller
     {
         $post->delete();
         return response()->json(['Post deleted'],200);
+    }
+
+    public function search($param): ?array
+    {
+        $results = Post::withAnyTags([$param]) //search by tags
+           ->orWhere("links", "LIKE", "%{$param}%" ) //search by given links
+           ->orWhereHas("category", function($q) use ($param) { //search by category name
+               $q->where("name", "LIKE", "%{$param}%");
+           })->paginate(10);
+
+        $posts = new Collection($results, new PostTransformer());
+        $posts->setPaginator(new IlluminatePaginatorAdapter($results));
+
+        $posts = $this->fractal->createData($posts);
+
+        return $posts->toArray();
     }
 }
