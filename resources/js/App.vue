@@ -6,10 +6,7 @@
 
         <div class="grid-x align-center">
             <div class="cell large-8">
-                <div class="header">
-                    <h3>The News</h3>
-                    <input placeholder="Buscar">
-                </div>
+               <Header/>
                 <NewsCard v-for="post in store.posts"
                           :category="post.category"
                           :region="post.region"
@@ -28,6 +25,7 @@
     import { store } from './store.js'
     import NewsCard from "./components/NewsCard.vue"
     import Pagination from "./components/Pagination.vue"
+    import Header from "./components/Header.vue";
 
     export default  {
         computed: {
@@ -35,7 +33,7 @@
                 return store
             }
         },
-        components: {Pagination, NewsCard},
+        components: {Header, Pagination, NewsCard},
         data() {
             return {
                 pagination: []
