@@ -9,8 +9,7 @@
 </template>
 
 <script>
-    import axios from "axios";
-    import {store} from "../store";
+    import {searchPosts, getPosts} from "../utils/apiRoutes"
 
     export default {
         data() {
@@ -20,20 +19,10 @@
         },
         methods: {
             search() {
-                if(this.searchParam.length > 1) {
-                    axios.get(`/api/search/${this.searchParam}`).then(response => {
-                        store.posts = response.data.data
-                        store.pagination = response.data.meta.pagination
-                    })
-                } else {
-                    axios.get('/api/post').then(response => {
-                        store.posts = response.data.data
-                        store.pagination = response.data.meta.pagination
-                    })
-                }
-
+                this.searchParam.length > 1
+                    ? searchPosts(this.searchParam)
+                    : getPosts()
             }
         }
     }
-
 </script>
