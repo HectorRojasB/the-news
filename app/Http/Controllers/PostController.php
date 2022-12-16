@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use League\Fractal\Manager;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Transformers\PostTransformer;
 use App\Http\Requests\StorePostRequest;
