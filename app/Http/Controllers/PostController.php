@@ -23,7 +23,7 @@ class PostController extends Controller
     }
     public function index(): ?array
     {
-        $postsPaginator = Post::paginate(10);
+        $postsPaginator = Post::orderBy('created_at', 'desc')->paginate(10);
 
         $posts = new Collection($postsPaginator, new PostTransformer());
         $posts->setPaginator(new IlluminatePaginatorAdapter($postsPaginator));
