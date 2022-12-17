@@ -22,7 +22,7 @@ class PostTransformer extends TransformerAbstract
             'tags' => $post->tags()->get()->pluck('name'),
             'content' => $post->content,
             'creation' => $this->formatCreationDate($post->created_at),
-            'links' => json_decode($post->links)
+            'links' => json_decode($post->links)->links
         ];
     }
 

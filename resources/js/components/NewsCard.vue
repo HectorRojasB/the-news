@@ -17,12 +17,11 @@
             </div>
             <div class="links">
                 Leer más en
-                <span v-for="link in this.links">
-                    <span v-for="single in link">
-                        <a :href="single.url" target="_blank">
-                            {{single.short}}
-                        </a>
-                    </span>
+                <span v-for="(link, index) in this.links" :key="links.short">
+                    <span v-if="index !== 0"> & </span>
+                    <a :href="link.url">
+                        {{link.short}}
+                    </a>
                 </span>
             </div>
         </div>
