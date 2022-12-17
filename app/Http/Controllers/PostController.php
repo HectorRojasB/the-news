@@ -69,11 +69,7 @@ class PostController extends Controller
 
     public function search($param): ?array
     {
-        $results = Post::withAnyTags([$param]) //search by tags
-           ->orWhere("links", "LIKE", "%{$param}%" ) //search by given links
-           ->orWhereHas("category", function($q) use ($param) { //search by category name
-               $q->where("name", "LIKE", "%{$param}%");
-           })->paginate(10);
+        $results = (new Post())->search($param);
 
         $posts = new Collection($results, new PostTransformer());
         $posts->setPaginator(new IlluminatePaginatorAdapter($results));
