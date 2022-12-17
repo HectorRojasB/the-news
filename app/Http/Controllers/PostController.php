@@ -36,7 +36,7 @@ class PostController extends Controller
     public function store(StorePostRequest $request) : JsonResponse
     {
         $post = Post::create([
-            'content' => $request->content,
+            'content' => $request->post_content,
             'region' => $request->region,
             'links' => $request->links,
             'category_id' => $request->category_id
@@ -47,9 +47,10 @@ class PostController extends Controller
         return response()->json(['Post created', $this->postTransformer->transform($post)],200);
     }
 
-    public function update(StorePostRequest $request, Post $post) : JsonResponse {
+    public function update(StorePostRequest $request, Post $post) : JsonResponse
+    {
         $post->update([
-            'content' => $request->content,
+            'content' => $request->post_content,
             'region' => $request->region,
             'links' => $request->links,
             'category_id' => $request->category_id
