@@ -426,7 +426,8 @@ Import this collection to Postman:
 
 ### Postman Setup
 Replace the initial value column of the ``` apiBaseRoute``` with your local host url
-![Captura de pantalla 2022-12-17 a la(s) 20.11.06.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.11.06.png)
+
+![Captura de pantalla 2022-12-17 a la(s) 20 11 06](https://user-images.githubusercontent.com/35705713/208317290-d6257e50-cd05-4a5b-8e6e-d41dd9bca0ff.png)
 
 
 
