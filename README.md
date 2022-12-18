@@ -124,6 +124,11 @@ parameters: none
 ```
 
 ## Frontend
+Run the following command:
+```
+npm run dev
+```
+
 Project home page:
 
 ![Captura de pantalla 2022-12-17 a la(s) 20.35.11.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.35.11.png)
