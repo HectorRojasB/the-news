@@ -46,7 +46,383 @@ Now we all set to use the API
 
 
 ## API
-Import [this](..%2F..%2FDesktop%2FThe%20News.postman_collection.json) collection to Postman
+Import this collection to Postman:
+
+```
+{
+	"info": {
+		"_postman_id": "ebd385cd-6eb7-4867-919b-09896bf5d306",
+		"name": "The News",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "Get Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/category",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Compras y adquisiciones",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/category",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Cooperacionesx",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/category/1",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/category/52",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"category",
+								"52"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "links",
+									"value": "{\"links\": [{\"url\": \"www.google.com\", \"short\": \"SteticNews.com\"}]}",
+									"type": "default"
+								},
+								{
+									"key": "post_content",
+									"value": "Test Content",
+									"type": "default"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "tags[0]",
+									"value": "tag1",
+									"type": "default"
+								},
+								{
+									"key": "tags[1]",
+									"value": "tag2",
+									"type": "default"
+								},
+								{
+									"key": "region",
+									"value": "Mexico",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/post",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "post_content",
+									"value": "dsdsdsd",
+									"type": "default"
+								},
+								{
+									"key": "links",
+									"value": "{\"links\": [{\"url\": \"www.google.com\", \"short\": \"SteticNews.com\"}]}",
+									"type": "default"
+								},
+								{
+									"key": "category_id",
+									"value": "2",
+									"type": "default"
+								},
+								{
+									"key": "tags[0]",
+									"value": "test",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/post/1?_method=PUT",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"1"
+							],
+							"query": [
+								{
+									"key": "_method",
+									"value": "PUT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/post",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"post"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Post",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/post/1",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{apiBaseRoute}}/api/search/com",
+							"host": [
+								"{{apiBaseRoute}}"
+							],
+							"path": [
+								"api",
+								"search",
+								"com"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "apiBaseRoute",
+			"value": "http://the-news.test",
+			"type": "default"
+		}
+	]
+}
+```
 
 ### Postman Setup
 Replace the initial value column of the ``` apiBaseRoute``` with your local host url
