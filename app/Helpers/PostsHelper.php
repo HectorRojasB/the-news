@@ -11,7 +11,7 @@ use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 class PostsHelper
 {
     private $fractal;
-    
+
     function __construct(Manager $fractal)
     {
         $this->fractal = $fractal;

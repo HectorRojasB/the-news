@@ -31,10 +31,9 @@ class PostTransformer extends TransformerAbstract
         setlocale(LC_TIME, 'es_ES');
         Carbon::setLocale('es');
 
-        $formattedNowDate = Carbon::now()->toDateString();
         $formattedCreatedAt = Carbon::parse($originalDate);
 
-        return $formattedCreatedAt->gt($formattedNowDate)
+        return $formattedCreatedAt->isToday()
             ? 'Hoy'.', '.$formattedCreatedAt->format('h:i')
             : ucfirst($formattedCreatedAt->diffForHumans(['options' => Carbon::ONE_DAY_WORDS])).', '.$formattedCreatedAt->format('h:i');
     }
