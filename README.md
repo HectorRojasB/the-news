@@ -1,66 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# The News 🗞️
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Requirements 🚀
+1. Install [Node 19](https://nodejs.org/en/)
+2. Install [Composer](https://getcomposer.org/download/)
+3. Install [Postman](https://www.postman.com/downloads/)
 
-## About Laravel
+### macOS
+1. Install PHP
+   ``` brew install php ```
+2. Make sure the ~/.composer/vendor/bin directory is in your system's "PATH".
+3. Install Laravel Valet as a global Composer package
+   ``` composer global require laravel/valet ```
+4. Execute Valet's install command
+   ``` valet install ```
+5. Register a directory on your machine that contains your application
+   ```
+   cd ~/Sites // Place where the-news folder is located
+   valet park
+    ``` 
+   Now, the site that was linked may be accessed at ```your-project-folder.test``` this wil be the main url
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Windows
+Use [XAMPP](https://www.apachefriends.org/es/download.html)/[WAMPP](https://www.apachefriends.org/es/download.html) or any other local Apache/NGnix/PHP/MySQL package that helps you run a PHP app easily.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+If you want to install [Apache](https://httpd.apache.org/docs/current/platform/windows.html)/[NGinx](https://nginx.org/en/download.html), [PHP](https://windows.php.net/download#php-8.1) and [MySQL](https://dev.mysql.com/downloads/installer/) by their own you can also do it.(You must configure your PHP environment by yourself)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Installation 🔧
+1. Navigate on the terminal/cmd to project folder
+2. ```npm install```
+3. ```composer install```
+4. Update the ```.env``` file to include a new database
+```
+DB_CONNECTION=mysql
+DB_HOST=your-host
+DB_PORT=your-port
+DB_DATABASE=your-database
+DB_USERNAME=your-user
+DB_PASSWORD=your-password
+```
+5. Run migrations ``` php artisan migrate  ```
+6. Run database seeders (to add dummy data) ``` php artisan db:seed  ```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Now we all set to use the API 
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## API
+Import [this](..%2F..%2FDesktop%2FThe%20News.postman_collection.json) collection to Postman
 
-## Laravel Sponsors
+### Postman Setup
+Replace the initial value column of the ``` apiBaseRoute``` with your local host url
+![Captura de pantalla 2022-12-17 a la(s) 20.11.06.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.11.06.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Categories
+##### Get categories:
+```
+method: get
+url: /api/category
+parameters: none
+```
+##### Create category:
+```
+method: post
+url: /api/category
+parameters: name(string, unique, required)
+```
+##### Update category:
+```
+method: put
+url: /api/category/{id}
+parameters: name(string, unique, required)
+```
+##### Delete category:
+```
+method: delete
+url: /api/category/{id}
+parameters: none
+```
 
-## Contributing
+### Posts
+##### Get posts:
+```
+method: get
+url: /api/post
+parameters: none
+```
+##### Create post:
+```
+method: post
+url: /api/post
+parameters: 
+post_content(required,max characters: 255, string)
+links(required, json) example on postman collection,
+region(not required, string)
+category_id(required, category_id has to exist)
+tags(not required, array) example on postman collection
+```
+##### Update post:
+```
+method: put
+url: /api/category/{id}
+parameters: 
+post_content(required,max characters: 255, string)
+links(required, json) example on postman collection,
+region(not required, string)
+category_id(required, category_id has to exist)
+tags(not required, array) example on postman collection
+```
+##### Delete posts:
+```
+method: delete
+url: /api/post/{id}
+parameters: none
+```
+##### Search posts:
+```
+use searchParam to search by region, tags, category name, given links
+method: get
+url: /api/search/{searchParam}
+parameters: none
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Frontend
+Project home page:
 
-## Code of Conduct
+![Captura de pantalla 2022-12-17 a la(s) 20.35.11.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.35.11.png)
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Search
+Use the input to make a search, this will show the results while typing
+![Captura de pantalla 2022-12-17 a la(s) 20.38.10.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.38.10.png)
 
-## Security Vulnerabilities
+### Pagination
+There will show only 10 posts per page, use direction arrows to navigate the results
+![Captura de pantalla 2022-12-17 a la(s) 20.39.05.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.39.05.png)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Frontend uses API calls to show posts and search.
