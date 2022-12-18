@@ -518,6 +518,7 @@ Use the input to make a search, this will show the results while typing, you can
 
 ### Pagination
 There will show only 10 posts per page, use direction arrows to navigate the results
-![Captura de pantalla 2022-12-17 a la(s) 20.39.05.png](..%2F..%2FDesktop%2FCaptura%20de%20pantalla%202022-12-17%20a%20la%28s%29%2020.39.05.png)
+![Captura de pantalla 2022-12-17 a la(s) 20 39 05](https://user-images.githubusercontent.com/35705713/208317367-192a94b1-ca05-49dc-b1fb-2e09b95bc2dc.png)
+
 
 Frontend uses API calls to show posts and search.
