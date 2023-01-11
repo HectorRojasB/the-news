@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="search">
         <h3>The News</h3>
         <input
             class="input"
@@ -28,3 +28,15 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .input {
+        padding: 8px;
+    }
+}
+</style>

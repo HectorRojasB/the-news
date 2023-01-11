@@ -2,7 +2,7 @@
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell large-8">
-                <Header />
+                <Search />
                 <div class="empty-state" v-if="store.posts.length === 0">
                     No hay noticias
                 </div>
@@ -24,7 +24,7 @@
 import { store } from "./utils/store.js";
 import NewsCard from "./components/NewsCard.vue";
 import Pagination from "./components/Pagination.vue";
-import Header from "./components/Header.vue";
+import Search from "./components/Search.vue";
 import { getPosts } from "./utils/apiRoutes";
 
 export default {
@@ -33,7 +33,7 @@ export default {
             return store;
         },
     },
-    components: { Header, Pagination, NewsCard },
+    components: { Search, Pagination, NewsCard },
     created() {
         getPosts();
     },
