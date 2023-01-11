@@ -3,12 +3,15 @@
     border-radius: 8px;
     box-shadow: 0 0 5px rgba($grey, 0.6);
 
-    .header, .footer {
+    .header,
+    .footer {
         display: flex;
         justify-content: space-between;
     }
 
-    .header, .footer, .content {
+    .header,
+    .footer,
+    .content {
         padding: 20px 16px;
     }
 
@@ -16,7 +19,8 @@
         background: $purple;
         border-radius: 8px 8px 0 0;
 
-        .category, .region {
+        .category,
+        .region {
             color: $white;
             font-weight: bold;
         }

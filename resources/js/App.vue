@@ -2,39 +2,40 @@
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell large-8">
-               <Header/>
+                <Header />
                 <div class="empty-state" v-if="store.posts.length === 0">
                     No hay noticias
                 </div>
-                <NewsCard v-for="post in store.posts"
-                          :category="post.category"
-                          :region="post.region"
-                          :content="post.content"
-                          :creation="post.creation"
-                          :links="post.links"
+                <NewsCard
+                    v-for="post in store.posts"
+                    :category="post.category"
+                    :region="post.region"
+                    :content="post.content"
+                    :creation="post.creation"
+                    :links="post.links"
                 />
-                <Pagination v-if="store.posts.length > 1"/>
+                <Pagination v-if="store.posts.length > 1" />
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    import { store } from './utils/store.js'
-    import NewsCard from "./components/NewsCard.vue"
-    import Pagination from "./components/Pagination.vue"
-    import Header from "./components/Header.vue";
-    import {getPosts} from "./utils/apiRoutes";
+import { store } from "./utils/store.js";
+import NewsCard from "./components/NewsCard.vue";
+import Pagination from "./components/Pagination.vue";
+import Header from "./components/Header.vue";
+import { getPosts } from "./utils/apiRoutes";
 
-    export default  {
-        computed: {
-            store() {
-                return store
-            }
+export default {
+    computed: {
+        store() {
+            return store;
         },
-        components: {Header, Pagination, NewsCard},
-        created() {
-            getPosts()
-        }
-    }
+    },
+    components: { Header, Pagination, NewsCard },
+    created() {
+        getPosts();
+    },
+};
 </script>

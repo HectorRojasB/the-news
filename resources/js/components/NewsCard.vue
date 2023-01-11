@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="content">
-            {{ this.content}}
+            {{ this.content }}
         </div>
         <div class="footer">
             <div class="date">
@@ -20,7 +20,7 @@
                 <span v-for="(link, index) in this.links" :key="links.short">
                     <span v-if="index !== 0"> & </span>
                     <a :href="link.url">
-                        {{link.short}}
+                        {{ link.short }}
                     </a>
                 </span>
             </div>
@@ -29,13 +29,7 @@
 </template>
 
 <script>
-    export default {
-        props:[
-            'category',
-            'region',
-            'content',
-            'creation',
-            'links'
-        ]
-    }
+export default {
+    props: ["category", "region", "content", "creation", "links"],
+};
 </script>
