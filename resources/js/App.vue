@@ -8,11 +8,8 @@
                 </div>
                 <NewsCard
                     v-for="post in store.posts"
-                    :category="post.category"
-                    :region="post.region"
-                    :content="post.content"
-                    :creation="post.creation"
-                    :links="post.links"
+                    :post="post"
+                    :key="post.id"
                 />
                 <Pagination v-if="store.posts.length > 1" />
             </div>

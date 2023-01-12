@@ -2,22 +2,25 @@
     <div class="news-card">
         <div class="header">
             <div class="category">
-                {{ this.category }}
+                {{ this.post.category }}
             </div>
             <div class="region">
-                {{ this.region }}
+                {{ this.post.region }}
             </div>
         </div>
         <div class="content">
-            {{ this.content }}
+            {{ this.post.content }}
         </div>
         <div class="footer">
             <div class="date">
-                {{ this.creation }}
+                {{ this.post.creation }}
             </div>
             <div class="links">
                 Leer más en
-                <span v-for="(link, index) in this.links" :key="links.short">
+                <span
+                    v-for="(link, index) in this.post.links"
+                    :key="this.post.links.short"
+                >
                     <span v-if="index !== 0"> & </span>
                     <a :href="link.url">
                         {{ link.short }}
@@ -30,6 +33,8 @@
 
 <script>
 export default {
-    props: ["category", "region", "content", "creation", "links"],
+    props: {
+        post: Object,
+    },
 };
 </script>
