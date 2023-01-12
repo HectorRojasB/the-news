@@ -1,25 +1,30 @@
+<script setup>
+const props = defineProps({
+    post: Object,
+});
+</script>
 <template>
     <div class="news-card">
         <div class="header">
             <div class="category">
-                {{ this.post.category }}
+                {{ post.category }}
             </div>
             <div class="region">
-                {{ this.post.region }}
+                {{ post.region }}
             </div>
         </div>
         <div class="content">
-            {{ this.post.content }}
+            {{ post.content }}
         </div>
         <div class="footer">
             <div class="date">
-                {{ this.post.creation }}
+                {{ post.creation }}
             </div>
             <div class="links">
                 Leer más en
                 <span
-                    v-for="(link, index) in this.post.links"
-                    :key="this.post.links.short"
+                    v-for="(link, index) in post.links"
+                    :key="post.links.short"
                 >
                     <span v-if="index !== 0"> & </span>
                     <a :href="link.url">
@@ -30,11 +35,3 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    props: {
-        post: Object,
-    },
-};
-</script>
