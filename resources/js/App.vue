@@ -1,38 +1,36 @@
+<script setup>
+import { onMounted, computed } from "vue";
+import { store } from "./utils/store.js";
+import { getPosts } from "./utils/apiRoutes";
+
+import NewsCard from "./components/NewsCard.vue";
+import Pagination from "./components/Pagination.vue";
+import Search from "./components/Search.vue";
+
+onMounted(() => {
+    getPosts();
+});
+
+const news = computed(() => {
+    return store;
+});
+</script>
+
 <template>
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell large-8">
                 <Search />
-                <div class="empty-state" v-if="store.posts.length === 0">
+                <div class="empty-state" v-if="news.posts.length === 0">
                     No hay noticias
                 </div>
                 <NewsCard
-                    v-for="post in store.posts"
+                    v-for="post in news.posts"
                     :post="post"
                     :key="post.id"
                 />
-                <Pagination v-if="store.posts.length > 1" />
+                <Pagination v-if="news.posts.length > 1" />
             </div>
         </div>
     </div>
 </template>
-
-<script>
-import { store } from "./utils/store.js";
-import NewsCard from "./components/NewsCard.vue";
-import Pagination from "./components/Pagination.vue";
-import Search from "./components/Search.vue";
-import { getPosts } from "./utils/apiRoutes";
-
-export default {
-    computed: {
-        store() {
-            return store;
-        },
-    },
-    components: { Search, Pagination, NewsCard },
-    created() {
-        getPosts();
-    },
-};
-</script>
