@@ -15,7 +15,7 @@ class StorePostRequest extends FormRequest
     {
         return [
             'post_content' => 'required|max:255|string',
-            'links' => 'required|json',
+            'link' => 'required|string',
             'region' => 'sometimes|required|string',
             'category_id' => 'required|exists:categories,id'
         ];

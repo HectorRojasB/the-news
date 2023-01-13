@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasTags;
 
-    protected $fillable = ['content', 'links', 'region', 'category_id'];
+    protected $fillable = ['content', 'link', 'region', 'category_id'];
 
     public function category()
     {
@@ -19,7 +19,7 @@ class Post extends Model
     public function search($param)
     {
         return $this->withAnyTags([$param]) //search by tags
-        ->orWhere("links", "LIKE", "%{$param}%" ) //search by given links
+        ->orWhere("link", "LIKE", "%{$param}%" ) //search by given link
         ->orWhere("region", "LIKE", "%{$param}%" ) //search by region
         ->orWhereHas("category", function($q) use ($param) { //search by category name
             $q->where("name", "LIKE", "%{$param}%");

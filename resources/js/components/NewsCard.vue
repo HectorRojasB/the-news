@@ -22,14 +22,8 @@ const props = defineProps({
             </div>
             <div class="links">
                 Leer más en
-                <span
-                    v-for="(link, index) in post.links"
-                    :key="post.links.short"
-                >
-                    <span v-if="index !== 0"> & </span>
-                    <a :href="link.url">
-                        {{ link.short }}
-                    </a>
+                <span>
+                    <a :href="post.link"> {{ post.link }} </a>
                 </span>
             </div>
         </div>

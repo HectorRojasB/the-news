@@ -30,7 +30,7 @@ class PostController extends Controller
         $post = Post::create([
             'content' => $request->post_content,
             'region' => $request->region,
-            'links' => $request->links,
+            'link' => $request->link,
             'category_id' => $request->category_id
         ]);
 
@@ -44,7 +44,7 @@ class PostController extends Controller
         $post->update([
             'content' => $request->post_content,
             'region' => $request->region,
-            'links' => $request->links,
+            'link' => $request->link,
             'category_id' => $request->category_id
         ]);
 
